@@ -1,0 +1,32 @@
+
+.login_class {
+    label {
+        display: inline-block;
+        min-width: 120px;
+    }
+
+    .textinput {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        min-width: 120px;
+        margin-top: 20px;
+        background-color: #187461;
+        color: white;
+    }
+
+    button:hover {
+        background-color: #079A7B;
+    }
+
+    .error_label {
+        margin-top: 15px;
+        label {
+            background-color: #F48661;
+            color:white;
+            text-align: center;
+        }
+    }
+}

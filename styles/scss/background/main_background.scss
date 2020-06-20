@@ -1,0 +1,31 @@
+.background_image {
+    div {
+        width: 85%;
+        background: #222222 ;
+        color: #ffffff;
+    }
+
+    background-image: url('/images/mpbkg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 23em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background_image_dusk {
+    div {
+        width: 85%;
+        background: #222222 ;
+        color: #ffffff;
+    }
+
+    background-image: url('/images/dusk.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 23em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
