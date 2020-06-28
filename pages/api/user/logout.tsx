@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from 'axios'
 
 import Response from "../../../classes/response/Response"
 import { Status } from "../../../classes/response/Status"
+import Encryption from "../../../functions/encryption/Encrypt"
 
 export default async (req, res) => {
     const key = req.headers.secret
@@ -40,12 +41,14 @@ const logout = async (secret: string): Promise<Response<string>> => {
     return dataResponse
 }
 
-const mockLogout = async (userToken: String): Promise<Response<string>>  => {
+const mockLogout = async (userToken: string): Promise<Response<string>>  => {
+    let tokenHash = process.env.TOKEN_HASH
+    let decrypted = Encryption.textDycrypt(userToken, tokenHash)
     let token = process.env.STATIC_TOKEN
     console.log(token, userToken )
 
-    if (token == userToken) {
-        return new Response<string>(Status.SUCCESS, 'logout successfull', 'token-forever-143')
+    if (token == decrypted) {
+        return new Response<string>(Status.SUCCESS, 'logout successfull', null)
     } else {
         return new Response<string>(Status.FAILED, 'logout failure', null)
     }

@@ -1,9 +1,10 @@
 
 import { handleResponse, handleErrorResponse } from "../../../functions/api/apiHandleResponse"
+import { Status } from "../../../classes/response/Status"
 import axios, { AxiosResponse } from 'axios'
 
 import Response from "../../../classes/response/Response"
-import { Status } from "../../../classes/response/Status"
+import Encryption from "../../../functions/encryption/Encrypt"
 
 export default async (req, res) => {
     const credentials = req.body
@@ -30,9 +31,10 @@ const logout = async (credential): Promise<Response<string>> => {
                     'Content-Type' : 'application/json',
                 }
             }
-         )
+        )
 
         dataResponse = response.data
+        dataResponse.data = Encryption.textEncrypt(dataResponse.data, process.env.TOKEN_HASH)
     } catch(error) {
         dataResponse = handleErrorResponse(error)
     }
@@ -44,9 +46,12 @@ const mockLogin = async (credential): Promise<Response<string>> => {
     let username = process.env.STATIC_USERNAME
     let password = process.env.STATIC_PASSWORD
     let token = process.env.STATIC_TOKEN
+    let tokenHash = process.env.TOKEN_HASH 
+
+    let encrypted = Encryption.textEncrypt(token,tokenHash)
 
     if (credential.userName == username && credential.password == password) {
-        return new Response<string>(Status.SUCCESS, 'login succesfull', token)
+        return new Response<string>(Status.SUCCESS, 'login succesfull', encrypted)
     } else {
         return new Response<string>(Status.UNAUTHORIZED, 'login failure', null)
     }
