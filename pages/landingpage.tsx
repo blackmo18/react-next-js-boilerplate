@@ -3,8 +3,6 @@ import { Button, Typography } from "@material-ui/core";
 import { CommonLayout } from "../components/layout/Layout";
 
 const LandingPage = (props) => {
-  const blockDisplay = {display: 'block'}
-
   return (
     <div>
       <CommonLayout>
