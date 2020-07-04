@@ -1,5 +1,5 @@
 
-import { handleResponse, handleErrorResponse } from "../../../functions/api/apiHandleResponse"
+import { handleResponse, handleErrorResponse } from "../../../functions/api/ApiHandleResponse"
 import { Status } from "../../../classes/response/Status"
 import axios, { AxiosResponse } from 'axios'
 

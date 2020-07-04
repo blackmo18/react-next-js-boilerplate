@@ -1,6 +1,6 @@
 
 import { InternalAddress } from "../../configs/internal";
-import { handleErrorResponse } from "../api/apiHandleResponse";
+import { handleErrorResponse } from "../api/ApiHandleResponse";
 
 import Response from "../../classes/response/Response"
 import cookie from 'js-cookie'
