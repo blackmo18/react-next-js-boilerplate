@@ -17,7 +17,7 @@ export default async (req, res) => {
     }
 }
 
-const logout = async (credential): Promise<Response<string>> => {
+const login = async (credential): Promise<Response<string>> => {
     const url = 'https://truly-yours.com/login'
     let dataResponse: Response<string>
     let response: AxiosResponse

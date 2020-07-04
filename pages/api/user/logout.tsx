@@ -34,6 +34,7 @@ const logout = async (secret: string): Promise<Response<string>> => {
         })
 
         dataResponse = response.data
+        dataResponse.data = Encryption.textEncrypt(dataResponse.data, process.env.TOKEN_HASH)
     } catch(error) {
         dataResponse = handleErrorResponse(error)
     }
@@ -45,7 +46,6 @@ const mockLogout = async (userToken: string): Promise<Response<string>>  => {
     let tokenHash = process.env.TOKEN_HASH
     let decrypted = Encryption.textDycrypt(userToken, tokenHash)
     let token = process.env.STATIC_TOKEN
-    console.log(token, userToken )
 
     if (token == decrypted) {
         return new Response<string>(Status.SUCCESS, 'logout successfull', null)
