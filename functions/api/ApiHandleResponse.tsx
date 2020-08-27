@@ -4,7 +4,6 @@ import { Status } from "../../classes/response/Status";
 export function handleResponse<T>(response: Response<T>, res) {
     switch (response.code) {
         case Status.SUCCESS: {
-
             res.status(200).json(response)
             break;
         }

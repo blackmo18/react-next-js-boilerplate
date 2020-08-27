@@ -1,5 +1,5 @@
 import Response from "../../classes/response/Response";
-import ApiResponseSate from "../../classes/response/ApiResponseState";
+import ApiResponseSate from '../../classes/payload/ApiResponseState'
 
 export function detApiState<T>(response: Response<T>, successMessage?: string): ApiResponseSate {
     let api = new  ApiResponseSate()
